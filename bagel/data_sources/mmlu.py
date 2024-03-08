@@ -13,9 +13,9 @@ def load_data(known_uids=set([]), **_):
     data = []
     logger.info("Loading MMLU train split...")
     for item in tqdm(
-        load_dataset("cais/mmlu", "all", split="auxiliary_train")
+        load_dataset("cais/mmlu", "all", split="test")
         .shuffle(seed=42)
-        .select(range(50000))
+        .select(range(14042))
     ):
         if len(item["choices"]) > len(CHOICES):
             continue

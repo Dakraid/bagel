@@ -8,8 +8,10 @@ from types import ModuleType
 from datasets import concatenate_datasets, load_dataset
 from transformers import AutoModel
 
+from . import aesir_preview
 from . import ai2_arc
 from . import airoboros
+from . import andrijdavid
 from . import apps
 from . import belebele
 from . import bluemoon
@@ -29,6 +31,7 @@ from . import lmsys_chat_1m
 from . import mathinstruct
 from . import mmlu
 from . import natural_instructions
+from . import norobots
 from . import openbookqa
 from . import orca_dpo_pairs
 from . import pippa
@@ -43,6 +46,7 @@ from . import squad_v2
 from . import summarization
 from . import synthia
 from . import toxic
+from . import toxic_undi95
 from . import truthy
 from . import ultrafeedback
 from . import whiterabbitneo

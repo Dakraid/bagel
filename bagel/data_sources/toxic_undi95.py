@@ -6,10 +6,11 @@ PRIORITY = 2
 
 
 def load_data(known_uids=set([]), **_):
-    """Toxic DPO pairs."""
-    logger.info("Loading Toxic DPO dataset...")
+    """Toxic Undi95 DPO pairs."""
+    logger.info("Loading Toxic Undi95 DPO dataset...")
     dataset = load_dataset(
-        "unalignment/toxic-dpo-v0.2", data_files=["toxic-dpo.parquet"], split="train"
+        "Undi95/toxic-dpo-v0.1-NoWarning", data_files=["default/train/0000.parquet"], 
+        split="train", revision="refs/convert/parquet"
     )
     data = []
     for item in dataset:
@@ -17,15 +18,15 @@ def load_data(known_uids=set([]), **_):
         if item["chosen"] != item["rejected"]:
             data.append(
                 {
-                    "id": get_uid(item["prompt"]),
-                    "source": "toxic-dpo",
-                    "prompt": item["prompt"],
+                    "id": get_uid(item["question"]),
+                    "source": "toxic-dpo-undi95",
+                    "prompt": item["question"],
                     "chosen": item["chosen"],
                     "rejected": item["rejected"],
                     "conversations": [
                         {
                             "from": "human",
-                            "value": item["prompt"],
+                            "value": item["question"],
                         },
                         {
                             "from": "gpt",
@@ -39,5 +40,5 @@ def load_data(known_uids=set([]), **_):
 
 if __name__ == "__main__":
     result = load_data()
-    result.to_json(f"toxic.jsonl")
+    result.to_json(f"toxic_undi95.jsonl")
     print(result)

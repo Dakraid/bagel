@@ -69,4 +69,6 @@ def load_data(known_uids=set([]), **_):
 
 
 if __name__ == "__main__":
-    print(load_data())
+    result = load_data()
+    result.to_json(f"slimorca.jsonl")
+    print(result)
